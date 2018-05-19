@@ -1,5 +1,5 @@
 # modalPop
-create custom modaluar popup
+Pure JS function which create a custom modal popups with any kind of text or close button supporting callback functions.
 
 * require babel
 * require modweb CSS framework

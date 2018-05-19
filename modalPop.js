@@ -73,7 +73,7 @@ modalPop.prototype = {
   _setEvents: function (cb) {
     var _this = this;
 
-    _this._prependFixIE(); // poor nasty IE :(
+    _this._prependFixIE(); // poor nasty IE11 :(
     _this._open();
     _this._close(cb);
   },

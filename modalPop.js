@@ -110,9 +110,9 @@ modalPop.prototype = {
     var _this = this;
 
     _this._tl2.kill();
-    _this._pop.style.display = 'flex';
     _this._title.innerHTML = _this._alert;
     _this._tl.set(_this._popWrap, {y: '-50%'})
+      .set(_this._pop, {className: '+=flex'})
       .to(_this._pop, 0.5, {autoAlpha: 1})
       .to(_this._popWrap, 0.5, {y: '0%'}, '-=0.4');
   },

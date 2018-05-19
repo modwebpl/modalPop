@@ -20,4 +20,4 @@ example:
 import {modalPop} from './js_dir/modalPop.js';<br>
 new modalPop(id, modalText, width, closeText, cb);
 
-<a href="https://github.com/modwebpl/modweb_">demo</a>
+<a href="http://www.modweb.pl/projects/css-framework/">demo</a>

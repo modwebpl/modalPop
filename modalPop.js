@@ -65,7 +65,7 @@ modalPop.prototype = {
     _this._tl = new TimelineLite();
     _this._tl2 = new TimelineLite();
 
-    CSSPlugin;
+    CSSPlugin; // webpack "provide" plugin purpose only
 
     return true;
   },

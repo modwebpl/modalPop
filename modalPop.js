@@ -124,7 +124,7 @@ modalPop.prototype = {
     modalClose._elh = modalClose._elh || {};
     modalClose._elh.click = function () {
       _this._tl2.to(_this._pop, 0.5, {autoAlpha: 0})
-        .add(TweenLite.to(_this._popWrap, 0.5, {y: '-50%', onComplete: _this._complete, onCompleteParams: [_this]}, '-=0.4'));
+        .add(TweenLite.to(_this._popWrap, 0.5, {y: '-50%', onComplete: _this._completeAnim, onCompleteParams: [_this]}, '-=0.4'));
       if (cb && typeof(cb) === 'function') cb();
     };
     _this._closePop.addEventListener('click', modalClose._elh.click);

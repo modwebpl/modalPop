@@ -1,5 +1,6 @@
 # modalPop
-Pure JS function which create a custom modal popups with any kind of text or close button supporting callback functions.
+Pure JS function which create a custom modal popups with any kind of message or close button - supports callback functions.
+
 
 * require babel
 * require modweb CSS framework

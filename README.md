@@ -3,7 +3,7 @@ Pure JS function which create a custom modal popups with any kind of message or 
 
 
 * require babel
-* require modweb CSS framework
+* require <a href="https://github.com/modwebpl/modweb_">modweb</a> CSS framework
 * tested on webpack 3.12.0
 
 

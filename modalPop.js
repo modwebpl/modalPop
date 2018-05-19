@@ -124,13 +124,13 @@ modalPop.prototype = {
     modalClose._elh = modalClose._elh || {};
     modalClose._elh.click = function () {
       _this._tl2.to(_this._pop, 0.5, {autoAlpha: 0})
-        .to(_this._popWrap, 0.5, {y: '-50%'}, '-=0.4');
-      setTimeout(function () {
-        _this._pop.remove();
-      }, 600);
-      _this._tl.kill();
+        .add(TweenLite.to(_this._popWrap, 0.5, {y: '-50%', onComplete: _this._complete, onCompleteParams: [_this]}, '-=0.4'));
       if (cb && typeof(cb) === 'function') cb();
     };
     _this._closePop.addEventListener('click', modalClose._elh.click);
-  }
+  },
+  
+  _completeAnim: function(_this){
+    _this._pop.remove();
+    _this._tl.kill();
 };

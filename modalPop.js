@@ -92,8 +92,8 @@ modalPop.prototype = {
     var _this = this,
       modalClose = _this._closePop;
 
-    modalClose._elhs = modalClose._elhs || {};
-    modalClose._elhs.click = function () {
+    modalClose._elh = modalClose._elh || {};
+    modalClose._elh.click = function () {
       _this._tl2.to(_this._pop, 0.5, {autoAlpha: 0})
         .to(_this._popWrap, 0.5, {y: '-50%'}, '-=0.4');
       setTimeout(function () {
@@ -102,6 +102,6 @@ modalPop.prototype = {
       _this._tl.kill();
       if (cb && typeof(cb) === 'function') cb();
     };
-    _this._closePop.addEventListener('click', modalClose._elhs.click);
+    _this._closePop.addEventListener('click', modalClose._elh.click);
   }
 };

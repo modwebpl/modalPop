@@ -73,12 +73,12 @@ modalPop.prototype = {
   _setEvents: function (cb) {
     var _this = this;
 
-    _this._prependFixIE(); // poor nasty IE11 :(
+    _this._fixIE(); // poor nasty IE11 :(
     _this._open();
     _this._close(cb);
   },
   
-  _prependFixIE: function(){
+  _fixIE: function(){
     HTMLElement = typeof(HTMLElement) != 'undefiend' ? HTMLElement : Element;
 
     HTMLElement.prototype.prepend = function (element) {
@@ -96,6 +96,14 @@ modalPop.prototype = {
         return this.appendChild(element);
       }
     };
+    
+    if (!('remove' in Element.prototype)) {
+      Element.prototype.remove = function () {
+        if (this.parentNode) {
+          this.parentNode.removeChild(this);
+        }
+      }
+    }
   },
 
   _open: function () {

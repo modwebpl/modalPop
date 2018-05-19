@@ -18,8 +18,6 @@ modalPop.prototype = {
     _this._parent = document.getElementsByTagName('body')[0];
     if (!_this._parent) return false;
 
-
-    // create elements
     const pop = document.createElement('div');
     const closeBtn = id + '_xBtn';
     pop.id = id;

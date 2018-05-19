@@ -73,8 +73,29 @@ modalPop.prototype = {
   _setEvents: function (cb) {
     var _this = this;
 
+    _this._prependFixIE(); // poor nasty IE :(
     _this._open();
     _this._close(cb);
+  },
+  
+  _prependFixIE: function(){
+    HTMLElement = typeof(HTMLElement) != 'undefiend' ? HTMLElement : Element;
+
+    HTMLElement.prototype.prepend = function (element) {
+      if (this.firstChild) {
+        return this.insertBefore(element, this.firstChild);
+      } else {
+        return this.appendChild(element);
+      }
+    };
+
+    HTMLElement.prototype.append = function (element) {
+      if (this.firstChild) {
+        return this.insertBefore(element, this.firstChild);
+      } else {
+        return this.appendChild(element);
+      }
+    };
   },
 
   _open: function () {

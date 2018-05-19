@@ -79,6 +79,7 @@ modalPop.prototype = {
   },
   
   _fixIE: function(){
+    
     HTMLElement = typeof(HTMLElement) != 'undefiend' ? HTMLElement : Element;
 
     HTMLElement.prototype.prepend = function (element) {

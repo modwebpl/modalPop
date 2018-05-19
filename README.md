@@ -17,5 +17,7 @@ Usage:
 
 example:
 
-import {modalPop} from './js_dir/modalPop.js';
+import {modalPop} from './js_dir/modalPop.js';<br>
 new modalPop(id, modalText, width, closeText, cb);
+
+<a href="https://github.com/modwebpl/modweb_">demo</a>

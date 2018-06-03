@@ -37,7 +37,6 @@ modalPop.prototype = {
     btn.className += 'btn btn--ok';
     btn.id = closeBtn;
     btn.innerText = closeText;
-    btn.setAttribute('role', 'button');
     btnWrap.append(btn);
 
     const title = document.createElement('div');

@@ -19,12 +19,12 @@ Usage:
 
 example:
 
-import {modalPop} from './js_dir/modalPop.js';<br>
+import {modalPop} from './js_dir/modalPop.js';<br><br>
 new modalPop({<br>
-  id: 'mPop',<br>
-  msg: '<span class="alert">Default alert message.</span>',<br>
-  btnMsg: 'Close'<br>
-  btnClass: 'class1 class2'<br>
+&nbsp;&nbsp;  id: 'mPop',<br>
+&nbsp;&nbsp;  msg: '<span class="alert">Default alert message.</span>',<br>
+&nbsp;&nbsp;  btnMsg: 'Close'<br>
+&nbsp;&nbsp;  btnClass: 'class1 class2'<br>
 });<br><br>
 
 <a href="http://www.modweb.pl/projects/css-framework/">demo</a>

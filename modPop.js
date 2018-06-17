@@ -97,6 +97,6 @@ modalPop.prototype = {
         .to(_this._wrap, 0.5, {y: '-50%'}, '-=0.4');
       if (cb && typeof(cb) === 'function' && cbInit === 'click') cb();
     };
-    _this._btn.addEventListener('click', modalClose._elhs.click);
+    modalClose.addEventListener('click', modalClose._elhs.click);
   }
 };

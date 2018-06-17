@@ -1,9 +1,9 @@
-export let modalPop = function ({id = 'mPop', msg = 'Success', width = '700', btnMsg = 'OK', btnClass = 'btn btn--ok', cb, cbInit = 'click'}) {
+export let modPop = function ({id = 'modPop', msg = 'Success', width = '700', btnMsg = 'OK', btnClass = 'btn btn--ok', cb, cbInit = 'click'}) {
   this.init(id, msg, width, btnMsg, btnClass, cb, cbInit);
 };
 
-modalPop.prototype = {
-  constructor: modalPop,
+modPop.prototype = {
+  constructor: modPop,
 
   init: function (id, msg, width, btnMsg, btnClass, cb, cbInit) {
     var _this = this;

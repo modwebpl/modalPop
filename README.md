@@ -19,7 +19,7 @@ Usage:
 
 example:
 
-import {modalPop} from './js_dir/modalPop.js';<br><br>
+import {modPop} from './js_dir/modPop.js';<br><br>
 new modalPop({<br>
 &nbsp;&nbsp;  id: 'mPop',<br>
 &nbsp;&nbsp;  msg: '<span class="alert">Default alert message.</span>',<br>

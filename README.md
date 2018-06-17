@@ -14,7 +14,7 @@ Usage:
 - width: set popup max width
 - btnMsg: set default close button text
 - btnClass: set default button class name
-- cb: name of the callback function which runs immediately after modal popup close or click
+- cb: name of the callback function which runs immediately after click or animation end
 - cbInit: ('click' or 'anim') immediately after click or animation end
 
 example:

@@ -1,5 +1,3 @@
-// create clean modal popup without any dependency
-
 export let modalPop = function ({id = 'mPop', msg = 'Success', width = '700px', background = 'transparent', border = '10px', shadow = '4px 6px 20px rgba(0,0,0,.3)', zIndex = '900', btnMsg = 'OK', btnClass = 'btn btn--ok', cb, cbInit = 'click'}) {
   this.init(id, msg, width, background, border, shadow, zIndex, btnMsg, btnClass, cb, cbInit);
 };

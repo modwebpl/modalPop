@@ -24,7 +24,6 @@ example:
 
 import {modPop} from './js_dir/modPop.js';<br><br>
 new modalPop({<br>
-&nbsp;&nbsp;  id: 'mPop',<br>
 &nbsp;&nbsp;  msg: '<span class="alert">Default alert message.</span>',<br>
 &nbsp;&nbsp;  btnMsg: 'Close'<br>
 &nbsp;&nbsp;  btnClass: 'class1 class2'<br>

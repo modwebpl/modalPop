@@ -1,18 +1,18 @@
-export let modPop = function ({id = 'modPop', msg = 'Success', width = '700', btnMsg = 'OK', btnClass = 'btn btn--ok', cb, cbInit = 'click'}) {
+export let modalPop = function ({id = 'mPop', msg = 'Success', width = '700', btnMsg = 'OK', btnClass = 'btn btn--ok', cb, cbInit = 'click'}) {
   this.init(id, msg, width, btnMsg, btnClass, cb, cbInit);
 };
 
-modPop.prototype = {
-  constructor: modPop,
+modalPop.prototype = {
+  constructor: modalPop,
 
   init: function (id, msg, width, btnMsg, btnClass, cb, cbInit) {
     var _this = this;
 
-    if (!_this._setVars(id, msg, width, btnMsg, btnClass, cb, cbInit)) return;
-    _this._setEvents(cb, cbInit);
+    if (!_this._setVars(id, msg, btnMsg, btnClass, cb, cbInit)) return;
+    _this._setEvents(width, cb, cbInit);
   },
 
-  _setVars: function (id, msg, width, btnMsg, btnClass, cb, cbInit) {
+  _setVars: function (id, msg, btnMsg, btnClass, cb, cbInit) {
     var _this = this;
 
     _this._parent = document.getElementsByTagName('body')[0];
@@ -20,45 +20,30 @@ modPop.prototype = {
 
 
     // create elements
-    const pop = document.createElement('div');
     const closeBtn = id + '_xBtn';
-    pop.id = id;
-    pop.className += 'row h100 fix bg--overlay z900 flex align-center justify-center hidden';
 
-    const wrap = document.createElement('div');
-    wrap.className += 'row shad txt-center bg--white padl50 padr50 padt50 padb40 xs-padl25 xs-padr25 xs-padt25 xs-padb25';
-    pop.prepend(wrap);
+    _this._pop = document.createElement('div');
+    _this._id = id;
+    _this._pop.className += 'row h100 fix bg--overlay z900 flex align-center justify-center hidden';
 
-    const btnWrap = document.createElement('div');
-    btnWrap.className += 'row mt30 flex justify-center';
-    wrap.append(btnWrap);
+    _this._wrap = document.createElement('div');
+    _this._wrap.className += 'row shad txt-center bg--white padl50 padr50 padt50 padb40 xs-padl25 xs-padr25 xs-padt25 xs-padb25';
+    _this._pop.prepend(_this._wrap);
 
-    const btn = document.createElement('a');
-    btn.className += btnClass;
-    btn.id = closeBtn;
-    btn.innerText = btnMsg;
-    btnWrap.append(btn);
+    _this._btnWrap = document.createElement('div');
+    _this._btnWrap.className += 'row mt30 flex justify-center';
+    _this._wrap.append(_this._btnWrap);
 
-    const title = document.createElement('div');
-    wrap.prepend(title);
+    _this._btn = document.createElement('a');
+    _this._btn.className += btnClass;
+    _this._btn.id = closeBtn;
+    _this._btn.innerText = btnMsg;
+    _this._btnWrap.append(_this._btn);
 
-    _this._parent.prepend(pop);
+    _this._title = document.createElement('div');
+    _this._wrap.prepend(_this._title);
 
-    _this._pop = _this._parent.querySelector('#' + id);
-    if (!_this._pop) return false;
-
-    _this._popWrap = _this._pop.firstElementChild;
-    if (!_this._popWrap) return false;
-
-    _this._title = _this._popWrap.firstElementChild;
-    if (!_this._title) return false;
-
-    _this._closePop = _this._pop.querySelector('#' + closeBtn);
-    if (!_this._closePop) return false;
-
-    _this._width = width;
-    _this._popWrap.style.maxWidth = _this._width + 'px';
-
+    _this._parent.prepend(_this._pop);
     _this._alert = msg;
 
     _this._tl = new TimelineLite();
@@ -76,36 +61,42 @@ modPop.prototype = {
     return true;
   },
 
-  _setEvents: function (cb, cbInit) {
+  _setEvents: function (width, cb, cbInit) {
     var _this = this;
 
-    _this._init();
+    _this._init(width);
     _this._close(cb, cbInit);
   },
 
-  _init: function () {
+  _init: function (width) {
     var _this = this;
 
-    _this._pop.style.display = 'flex';
+    _this._setStyle(_this._wrap, {'maxWidth': width + 'px'});
+    _this._setStyle(_this._pop, {'display': 'flex'});
     _this._title.innerHTML = _this._alert;
 
-    _this._tl.set(_this._popWrap, {y: '-50%'})
+    _this._tl.set(_this._wrap, {y: '-50%'})
       .to(_this._pop, 0.5, {autoAlpha: 1})
-      .to(_this._popWrap, 0.5, {y: '0%'}, '-=0.4');
+      .to(_this._wrap, 0.5, {y: '0%'}, '-=0.4');
+  },
+  
+  _setStyle: function(el, propertyObject){
+    for (let property in propertyObject)
+      el.style[property] = propertyObject[property];
   },
 
   _close: function (cb, cbInit) {
     var _this = this;
 
-    const modalClose = _this._closePop;
+    const modalClose = _this._btn;
 
     modalClose._elhs = modalClose._elhs || {};
     modalClose._elhs.click = function () {
       _this._tl2.play()
         .to(_this._pop, 0.5, {autoAlpha: 0})
-        .to(_this._popWrap, 0.5, {y: '-50%'}, '-=0.4');
+        .to(_this._wrap, 0.5, {y: '-50%'}, '-=0.4');
       if (cb && typeof(cb) === 'function' && cbInit === 'click') cb();
     };
-    _this._closePop.addEventListener('click', modalClose._elhs.click);
+    _this._btn.addEventListener('click', modalClose._elhs.click);
   }
 };

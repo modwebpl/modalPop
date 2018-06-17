@@ -4,8 +4,6 @@ Pure JS function which create a custom modal popups with any kind of message or 
 
 * require babel
 * require GSAP
-* tested on webpack 3.12.0
-
 
 Usage:
 

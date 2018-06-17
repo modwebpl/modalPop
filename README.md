@@ -9,15 +9,22 @@ Pure JS function which create a custom modal popups with any kind of message or 
 
 Usage:
 
-- id: div id name
-- modalText: default message box
-- width: popup max width
-- closeText: default close button text
+- id: set ID name of modal popup
+- msg: set default message box
+- width: set popup max width
+- btnMsg: set default close button text
+- btnClass: set default button class name
 - cb: name of the callback function which runs immediately after modal popup close
+- cbInit: ('click' or 'anim') immediately after click or animation end
 
 example:
 
 import {modalPop} from './js_dir/modalPop.js';<br>
-new modalPop(id, modalText, width, closeText, cb);
+new modalPop({<br>
+  id: 'mPop',<br>
+  msg: '<span class="alert">Default alert message.</span>',<br>
+  btnMsg: 'Close'<br>
+  btnClass: 'class1 class2'<br>
+});<br><br>
 
 <a href="http://www.modweb.pl/projects/css-framework/">demo</a>

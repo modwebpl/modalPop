@@ -105,7 +105,7 @@ modalPop.prototype = {
 
     _this._tl.set(_this._wrap, {y: '-50%'})
       .to(_this._pop, 0.5, {autoAlpha: 1})
-      .to(_this._wrap, 0.5, {y: '0%'}, '-=0.4');
+      .to(_this._wrap, 0.5, {y: '0%', ease: Power3.easeInOut}, '-=0.5');
   },
   
   _setStyle: function(el, propertyObject){
@@ -122,7 +122,7 @@ modalPop.prototype = {
     modalClose._elhs.click = function () {
       _this._tl2.play()
         .to(_this._pop, 0.5, {autoAlpha: 0})
-        .to(_this._wrap, 0.5, {y: '-50%'}, '-=0.4');
+        .to(_this._wrap, 0.5, {y: '-50%', ease: Power3.easeInOut}, '-=0.5');
       if (cb && typeof(cb) === 'function' && cbInit === 'click') cb();
     };
     modalClose.addEventListener('click', modalClose._elhs.click);

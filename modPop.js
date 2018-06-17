@@ -32,7 +32,7 @@ modalPop.prototype = {
       'position': 'fixed',
       'background': background,
       'overflow': 'hidden',
-      'display': '-webkit-box;-ms-flexbox;flex',
+      'display': 'flex',
       '-webkit-box-align': 'center',
       '-ms-flex-align': 'center',
       'align-items': 'center',
@@ -50,15 +50,15 @@ modalPop.prototype = {
       'background-color': '#fff',
       'width': '100%',
       'text-align': 'center',
-      'padding': '2em 1em 3em',
+      'padding': '2em 1em',
     });
     _this._pop.prepend(_this._wrap);
 
     _this._btnWrap = document.createElement('div');
     _this._setStyle(_this._btnWrap, {
       'width': '100%',
-      'marginTop': '2.2em',
-      'display': '-webkit-box;-ms-flexbox;flex',
+      'marginTop': '2em',
+      'display': 'flex',
       '-webkit-box-pack': 'center',
       '-ms-flex-pack': 'center',
       'justify-content': 'center'

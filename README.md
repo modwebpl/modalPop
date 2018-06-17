@@ -8,7 +8,7 @@ Pure JS function which create a custom modal popups with any kind of message or 
 
 Usage:
 
-- id: set ID name of modal popup (default: modPop)
+- id - set ID name of modal popup (default: modPop)
 - msg: set default message box
 - width: set popup max width (default: 700px)
 - background: set background (default: transparent)

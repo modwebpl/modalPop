@@ -1,29 +1,29 @@
-export let modalPop = function (id, modalText = 'Success', width = '700', closeText = 'OK', cb) {
-  this.init(id, modalText, width, closeText, cb);
+export let modalPop = function ({id = 'mPop', msg = 'Success', width = '700', btnMsg = 'OK', btnClass = 'btn btn--ok', cb, cbInit = 'click'}) {
+  this.init(id, msg, width, btnMsg, btnClass, cb, cbInit);
 };
 
 modalPop.prototype = {
   constructor: modalPop,
 
-  init: function (id, modalText, width, closeText, cb) {
+  init: function (id, msg, width, btnMsg, btnClass, cb, cbInit) {
     var _this = this;
 
-    if (!_this._setVars(id, modalText, width, closeText)) return;
-    _this._setEvents(cb);
+    if (!_this._setVars(id, msg, width, btnMsg, btnClass, cb, cbInit)) return;
+    _this._setEvents(cb, cbInit);
   },
 
-  _setVars: function (id, modalText, width, closeText) {
+  _setVars: function (id, msg, width, btnMsg, btnClass, cb, cbInit) {
     var _this = this;
 
     _this._parent = document.getElementsByTagName('body')[0];
     if (!_this._parent) return false;
 
+
+    // create elements
     const pop = document.createElement('div');
     const closeBtn = id + '_xBtn';
     pop.id = id;
-    pop.className += 'row h100 fix bg--overlay z999 flex align-center justify-center hidden';
-    pop.setAttribute('data-close', closeBtn);
-    pop.setAttribute('role', 'alertdialog');
+    pop.className += 'row h100 fix bg--overlay z900 flex align-center justify-center hidden';
 
     const wrap = document.createElement('div');
     wrap.className += 'row shad txt-center bg--white padl50 padr50 padt50 padb40 xs-padl25 xs-padr25 xs-padt25 xs-padb25';
@@ -34,9 +34,9 @@ modalPop.prototype = {
     wrap.append(btnWrap);
 
     const btn = document.createElement('a');
-    btn.className += 'btn btn--ok';
+    btn.className += btnClass;
     btn.id = closeBtn;
-    btn.innerText = closeText;
+    btn.innerText = btnMsg;
     btnWrap.append(btn);
 
     const title = document.createElement('div');
@@ -59,78 +59,53 @@ modalPop.prototype = {
     _this._width = width;
     _this._popWrap.style.maxWidth = _this._width + 'px';
 
-    _this._alert = modalText;
+    _this._alert = msg;
 
     _this._tl = new TimelineLite();
-    _this._tl2 = new TimelineLite();
+    _this._tl2 = new TimelineLite({
+      paused: true,
+      onComplete: function () {
+        _this._pop.remove();
+        _this._tl.clear();
+        if (cb && typeof(cb) === 'function' && cbInit === 'anim') cb();
+      }
+    });
 
-    CSSPlugin; // webpack "provide" plugin purpose only
+    CSSPlugin;
 
     return true;
   },
 
-  _setEvents: function (cb) {
+  _setEvents: function (cb, cbInit) {
     var _this = this;
 
-    _this._fixIE(); // poor nasty IE11 :(
-    _this._open();
-    _this._close(cb);
-  },
-  
-  _fixIE: function(){
-    
-    HTMLElement = typeof(HTMLElement) != 'undefiend' ? HTMLElement : Element;
-
-    HTMLElement.prototype.prepend = function (element) {
-      if (this.firstChild) {
-        return this.insertBefore(element, this.firstChild);
-      } else {
-        return this.appendChild(element);
-      }
-    };
-
-    HTMLElement.prototype.append = function (element) {
-      if (this.firstChild) {
-        return this.insertBefore(element, this.firstChild);
-      } else {
-        return this.appendChild(element);
-      }
-    };
-    
-    if (!('remove' in Element.prototype)) {
-      Element.prototype.remove = function () {
-        if (this.parentNode) {
-          this.parentNode.removeChild(this);
-        }
-      }
-    }
+    _this._init();
+    _this._close(cb, cbInit);
   },
 
-  _open: function () {
+  _init: function () {
     var _this = this;
 
-    _this._tl2.kill();
+    _this._pop.style.display = 'flex';
     _this._title.innerHTML = _this._alert;
+
     _this._tl.set(_this._popWrap, {y: '-50%'})
-      .set(_this._pop, {className: '+=flex'})
       .to(_this._pop, 0.5, {autoAlpha: 1})
       .to(_this._popWrap, 0.5, {y: '0%'}, '-=0.4');
   },
 
-  _close: function (cb) {
-    var _this = this,
-      modalClose = _this._closePop;
+  _close: function (cb, cbInit) {
+    var _this = this;
 
-    modalClose._elh = modalClose._elh || {};
-    modalClose._elh.click = function () {
-      _this._tl2.to(_this._pop, 0.5, {autoAlpha: 0})
-        .add(TweenLite.to(_this._popWrap, 0.5, {y: '-50%', onComplete: _this._completeAnim, onCompleteParams: [_this]}, '-=0.4'));
-      if (cb && typeof(cb) === 'function') cb();
+    const modalClose = _this._closePop;
+
+    modalClose._elhs = modalClose._elhs || {};
+    modalClose._elhs.click = function () {
+      _this._tl2.play()
+        .to(_this._pop, 0.5, {autoAlpha: 0})
+        .to(_this._popWrap, 0.5, {y: '-50%'}, '-=0.4');
+      if (cb && typeof(cb) === 'function' && cbInit === 'click') cb();
     };
-    _this._closePop.addEventListener('click', modalClose._elh.click);
-  },
-  
-  _completeAnim: function(_this){
-    _this._pop.remove();
-    _this._tl.kill();
+    _this._closePop.addEventListener('click', modalClose._elhs.click);
+  }
 };

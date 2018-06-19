@@ -1,18 +1,18 @@
-export let modalPop = function ({id = 'mPop', msg = 'Success', width = '700px', background = 'transparent', border = '10px', shadow = '4px 6px 20px rgba(0,0,0,.3)', zIndex = '900', btnMsg = 'OK', btnClass = 'btn btn--ok', cb, cbInit = 'click'}) {
-  this.init(id, msg, width, background, border, shadow, zIndex, btnMsg, btnClass, cb, cbInit);
+export let modPop = function ({id = 'mPop', msg = 'Success', width = '700px', bg = 'transparent', border = '10px', shadow = '4px 6px 20px rgba(0,0,0,.3)', zIndex = '900', btnMsg = 'OK', btnClass = 'btn btn--ok', cb, cbInit = 'click'}) {
+  this.init(id, msg, width, bg, border, shadow, zIndex, btnMsg, btnClass, cb, cbAfter);
 };
 
-modalPop.prototype = {
-  constructor: modalPop,
+modPop.prototype = {
+  constructor: modPop,
 
-  init: function (id, msg, width, background, border, shadow, zIndex, btnMsg, btnClass, cb, cbInit) {
+  init: function (id, msg, width, bg, border, shadow, zIndex, btnMsg, btnClass, cb, cbAfter) {
     var _this = this;
 
-    if (!_this._setVars(id, msg, width, background, border, shadow, zIndex, btnMsg, btnClass, cb, cbInit)) return;
-    _this._setEvents(cb, cbInit);
+    if (!_this._setVars(id, msg, width, bg, border, shadow, zIndex, btnMsg, btnClass, cb, cbAfter)) return;
+    _this._setEvents(cb, cbAfter);
   },
 
-  _setVars: function (id, msg, width, background, border, shadow, zIndex, btnMsg, btnClass, cb, cbInit) {
+  _setVars: function (id, msg, width, bg, border, shadow, zIndex, btnMsg, btnClass, cb, cbAfter) {
     var _this = this;
 
     _this._parent = document.getElementsByTagName('body')[0];
@@ -28,7 +28,7 @@ modalPop.prototype = {
       'width': '100%',
       'height': '100%',
       'position': 'fixed',
-      'background': background,
+      'background': bg,
       'overflow': 'hidden',
       'display': 'flex',
       '-webkit-box-align': 'center',
@@ -80,7 +80,7 @@ modalPop.prototype = {
       onComplete: function () {
         _this._pop.remove();
         _this._tl.clear();
-        if (cb && typeof(cb) === 'function' && cbInit === 'anim') cb();
+        if (cb && typeof(cb) === 'function' && cbAfter === 'anim') cb();
       }
     });
 
@@ -89,11 +89,11 @@ modalPop.prototype = {
     return true;
   },
 
-  _setEvents: function (width, cb, cbInit) {
+  _setEvents: function (width, cb, cbAfter) {
     var _this = this;
 
     _this._init(width);
-    _this._close(cb, cbInit);
+    _this._close(cb, cbAfter);
   },
 
   _init: function (width) {
@@ -111,7 +111,7 @@ modalPop.prototype = {
       el.style[property] = propertyObject[property];
   },
 
-  _close: function (cb, cbInit) {
+  _close: function (cb, cbAfter) {
     var _this = this;
 
     const modalClose = _this._btn;
@@ -121,7 +121,7 @@ modalPop.prototype = {
       _this._tl2.play()
         .to(_this._pop, 0.5, {autoAlpha: 0})
         .to(_this._wrap, 0.5, {y: '-50%', ease: Power3.easeInOut}, '-=0.5');
-      if (cb && typeof(cb) === 'function' && cbInit === 'click') cb();
+      if (cb && typeof(cb) === 'function' && cbAfter === 'click') cb();
     };
     modalClose.addEventListener('click', modalClose._elhs.click);
   }

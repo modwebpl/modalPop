@@ -74,12 +74,15 @@ modPop.prototype = {
     _this._parent.prepend(_this._pop);
     _this._alert = msg;
 
-    _this._tl = new TimelineLite();
+    _this._tl = new TimelineLite({
+      onComplete: function(){
+        this.clear();
+    });
     _this._tl2 = new TimelineLite({
       paused: true,
       onComplete: function () {
+        this.clear();
         _this._pop.remove();
-        _this._tl.clear();
         if (cb && typeof(cb) === 'function' && cbAfter === 'anim') cb();
       }
     });

@@ -16,8 +16,7 @@ Usage:
 - border - set border radius (default: 10px)
 - shadow - set popup box-shadow (default: 4px 6px 20px rgba(0,0,0,.3))
 - btnClass - set default button class name
-- cb - name of the callback function which runs immediately after click or animation end
-- cbInit - ('click' or 'anim') immediately after click or animation end
+- cb - name of the callback function which runs immediately after modal close
 
 example:
 

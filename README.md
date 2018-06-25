@@ -8,7 +8,7 @@ Pure JS function which create a custom modal popups with any kind of message or 
 Usage:
 
 - id - set ID name of modal popup (default: modPop)
-- msg - set default message box
+- alert - set default message box
 - width - set popup max width (default: 700px)
 - background - set background (default: transparent)
 - zIndex - set z-index (default: 900)
@@ -21,8 +21,8 @@ Usage:
 example:
 
 import {modPop} from './js_dir/modPop.js';<br><br>
-new modalPop({<br>
-&nbsp;&nbsp;  msg: '<span class="alert">Default alert message.</span>',<br>
+new modPop({<br>
+&nbsp;&nbsp;  alert: '<span class="alert">Default alert message.</span>',<br>
 &nbsp;&nbsp;  btnMsg: 'Close me'<br>
 &nbsp;&nbsp;  btnClass: 'class1 class2'<br>
 });<br><br>

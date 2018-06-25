@@ -1,18 +1,18 @@
 export let modPop = function ({id = 'mPop', msg = 'Success', width = '700px', bg = 'transparent', border = '10px', shadow = '4px 6px 20px rgba(0,0,0,.3)', zIndex = '900', btnMsg = 'OK', btnClass = 'btn btn--ok', cb, cbInit = 'click'}) {
-  this.init(id, msg, width, bg, border, shadow, zIndex, btnMsg, btnClass, cb, cbAfter);
+  this.init(id, msg, width, bg, border, shadow, zIndex, btnMsg, btnClass, cb);
 };
 
 modPop.prototype = {
   constructor: modPop,
 
-  init: function (id, msg, width, bg, border, shadow, zIndex, btnMsg, btnClass, cb, cbAfter) {
+  init: function (id, msg, width, bg, border, shadow, zIndex, btnMsg, btnClass, cb) {
     var _this = this;
 
-    if (!_this._setVars(id, msg, width, bg, border, shadow, zIndex, btnMsg, btnClass, cb, cbAfter)) return;
-    _this._setEvents(cb, cbAfter);
+    if (!_this._setVars(id, msg, width, bg, border, shadow, zIndex, btnMsg, btnClass)) return;
+    _this._setEvents(cb);
   },
 
-  _setVars: function (id, msg, width, bg, border, shadow, zIndex, btnMsg, btnClass, cb, cbAfter) {
+  _setVars: function (id, msg, width, bg, border, shadow, zIndex, btnMsg, btnClass) {
     var _this = this;
 
     _this._parent = document.getElementsByTagName('body')[0];
@@ -74,25 +74,14 @@ modPop.prototype = {
     _this._parent.prepend(_this._pop);
     _this._alert = msg;
 
-    _this._tl = new TimelineLite({
-      onComplete: function(){
-        this.clear();
-    });
-    _this._tl2 = new TimelineLite({
-      paused: true,
-      onComplete: function () {
-        this.clear();
-        _this._pop.remove();
-        if (cb && typeof(cb) === 'function' && cbAfter === 'anim') cb();
-      }
-    });
+    _this._tl = new TimelineLite();
 
     CSSPlugin;
 
     return true;
   },
 
-  _setEvents: function (width, cb, cbAfter) {
+  _setEvents: function (width, cb) {
     var _this = this;
 
     _this._init(width);
@@ -114,17 +103,19 @@ modPop.prototype = {
       el.style[property] = propertyObject[property];
   },
 
-  _close: function (cb, cbAfter) {
+  _close: function (cb) {
     var _this = this;
 
     const modalClose = _this._btn;
 
     modalClose._elhs = modalClose._elhs || {};
     modalClose._elhs.click = function () {
-      _this._tl2.play()
-        .to(_this._pop, 0.5, {autoAlpha: 0})
-        .to(_this._wrap, 0.5, {y: '-50%', ease: Power3.easeInOut}, '-=0.5');
-      if (cb && typeof(cb) === 'function' && cbAfter === 'click') cb();
+      setTimeout(function () {
+        _this._pop.remove();
+      }, 500);
+      _this._tl.reverse();
+
+      if (cb && typeof(cb) === 'function') cb();
     };
     modalClose.addEventListener('click', modalClose._elhs.click);
   }

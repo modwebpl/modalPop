@@ -1,18 +1,18 @@
-export let modPop = function ({id = 'mPop', msg = 'Success', width = '700px', bg = 'transparent', border = '10px', shadow = '4px 6px 20px rgba(0,0,0,.3)', zIndex = '900', btnMsg = 'OK', btnClass = 'btn btn--ok', cb, cbInit = 'click'}) {
+export let modPop = function ({id = 'mPop', alert = 'Success', width = '700px', bg = 'transparent', border = '10px', shadow = '4px 6px 20px rgba(0,0,0,.3)', zIndex = '900', btnMsg = 'OK', btnClass = 'btn btn--ok', cb, cbInit = 'click'}) {
   this.init(id, msg, width, bg, border, shadow, zIndex, btnMsg, btnClass, cb);
 };
 
 modPop.prototype = {
   constructor: modPop,
 
-  init: function (id, msg, width, bg, border, shadow, zIndex, btnMsg, btnClass, cb) {
+  init: function (id, alert, width, bg, border, shadow, zIndex, btnMsg, btnClass, cb) {
     var _this = this;
 
-    if (!_this._setVars(id, msg, width, bg, border, shadow, zIndex, btnMsg, btnClass)) return;
+    if (!_this._setVars(id, alert, width, bg, border, shadow, zIndex, btnMsg, btnClass)) return;
     _this._setEvents(cb);
   },
 
-  _setVars: function (id, msg, width, bg, border, shadow, zIndex, btnMsg, btnClass) {
+  _setVars: function (id, alert, width, bg, border, shadow, zIndex, btnMsg, btnClass) {
     var _this = this;
 
     _this._parent = document.getElementsByTagName('body')[0];
@@ -72,7 +72,7 @@ modPop.prototype = {
     _this._wrap.prepend(_this._title);
 
     _this._parent.prepend(_this._pop);
-    _this._alert = msg;
+    _this._alert = alert;
 
     _this._tl = new TimelineLite();
 
@@ -85,7 +85,7 @@ modPop.prototype = {
     var _this = this;
 
     _this._init(width);
-    _this._close(cb, cbAfter);
+    _this._close(cb);
   },
 
   _init: function (width) {

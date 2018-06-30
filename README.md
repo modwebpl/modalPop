@@ -20,10 +20,10 @@ Usage:
 
 example:
 
-import {modPop} from "./tpl/modPop";
-window.modPop = function(...args){
-  new modPop(...args);
-};
+import {modPop} from "./tpl/modPop";<br><br>
+window.modPop = function(...args){<br>
+&nbsp;&nbsp;new modPop(...args);<br>
+};<br>
 
 modPop({<br>
 &nbsp;&nbsp;  msg: '<span class="alert">Default alert message.</span>',<br>

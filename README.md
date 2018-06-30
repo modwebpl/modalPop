@@ -12,9 +12,9 @@ Usage:
 - width - set popup max width (default: 700px)
 - background - set background (default: transparent)
 - zIndex - set z-index (default: 900)
-- btnMsg - set default close button text
 - border - set border radius (default: 10px)
 - shadow - set popup box-shadow (default: 4px 6px 20px rgba(0,0,0,.3))
+- btnMsg - set default close button text
 - btnClass - set default button class name
 - cb - name of the callback function which runs immediately after modal close
 

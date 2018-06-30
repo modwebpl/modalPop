@@ -35,7 +35,6 @@ modPop({<br>
 });<br><br>
 
 ..as bright as the sun, as straight as wire =)
-
-<br><br>
+<br>
 
 <a href="http://www.modweb.pl/projects/css-framework/">demo here</a>

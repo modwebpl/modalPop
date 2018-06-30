@@ -20,12 +20,14 @@ Usage:
 
 # usage:
 
-// import module<br>
+[1] import module<br>
 import {modPop} from "./tpl/modPop";<br><br>
-// global call<br>
+<br><br>
 window.modPop = function(...args){<br>
 &nbsp;&nbsp;new modPop(...args);<br>
-};<br>
+};<br><br>
+
+[2] global call<br><br>
 
 modPop({<br>
 &nbsp;&nbsp;  msg: '<span class="alert">Default alert message.</span>',<br>

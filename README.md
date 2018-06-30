@@ -22,7 +22,7 @@ Usage:
 
 // import module
 import {modPop} from "./tpl/modPop";<br><br>
-// global<br>call
+// global call<br>
 window.modPop = function(...args){<br>
 &nbsp;&nbsp;new modPop(...args);<br>
 };<br>

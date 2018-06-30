@@ -20,9 +20,9 @@ Usage:
 
 # usage:
 
-// import module
+/* import module */
 import {modPop} from "./tpl/modPop";<br><br>
-// global call<br>
+/* global call */<br>
 window.modPop = function(...args){<br>
 &nbsp;&nbsp;new modPop(...args);<br>
 };<br>

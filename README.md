@@ -18,9 +18,11 @@ Usage:
 - btnClass - set default button class name
 - cb - name of the callback function which runs immediately after modal close
 
-example:
+# usage:
 
+// import module
 import {modPop} from "./tpl/modPop";<br><br>
+// global call
 window.modPop = function(...args){<br>
 &nbsp;&nbsp;new modPop(...args);<br>
 };<br>

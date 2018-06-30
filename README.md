@@ -22,7 +22,7 @@ Usage:
 
 // import module
 import {modPop} from "./tpl/modPop";<br><br>
-// global call
+// global<br>call
 window.modPop = function(...args){<br>
 &nbsp;&nbsp;new modPop(...args);<br>
 };<br>
@@ -31,6 +31,10 @@ modPop({<br>
 &nbsp;&nbsp;  msg: '<span class="alert">Default alert message.</span>',<br>
 &nbsp;&nbsp;  btnMsg: 'Close'<br>
 &nbsp;&nbsp;  btnClass: 'example-class1 example-class2'<br>
-});<br><br>
+});<br><br><br>
+
+as bright as the sun, as straight as wire =)
+
+<br><br>
 
 <a href="http://www.modweb.pl/projects/css-framework/">demo here</a>

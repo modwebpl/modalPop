@@ -20,11 +20,15 @@ Usage:
 
 example:
 
-import {modPop} from './js_dir/modPop.js';<br><br>
-new modPop({<br>
-&nbsp;&nbsp;  alert: '<span class="alert">Default alert message.</span>',<br>
-&nbsp;&nbsp;  btnMsg: 'Close me'<br>
-&nbsp;&nbsp;  btnClass: 'class1 class2'<br>
+import {modPop} from "./tpl/modPop";
+window.modPop = function(...args){
+  new modPop(...args);
+};
+
+modPop({<br>
+&nbsp;&nbsp;  msg: '<span class="alert">Default alert message.</span>',<br>
+&nbsp;&nbsp;  btnMsg: 'Close'<br>
+&nbsp;&nbsp;  btnClass: 'example-class1 example-class2'<br>
 });<br><br>
 
-<a href="http://www.modweb.pl/projects/css-framework/">demo</a>
+<a href="http://www.modweb.pl/projects/css-framework/">demo here</a>

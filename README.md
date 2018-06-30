@@ -31,9 +31,9 @@ modPop({<br>
 &nbsp;&nbsp;  msg: '<span class="alert">Default alert message.</span>',<br>
 &nbsp;&nbsp;  btnMsg: 'Close'<br>
 &nbsp;&nbsp;  btnClass: 'example-class1 example-class2'<br>
-});<br><br><br>
+});<br><br>
 
-as bright as the sun, as straight as wire =)
+..as bright as the sun, as straight as wire =)
 
 <br><br>
 

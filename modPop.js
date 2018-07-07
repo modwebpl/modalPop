@@ -85,11 +85,11 @@ modPop.prototype = {
   _setEvents: function (cb) {
     var _this = this;
 
-    _this._init();
+    _this._open();
     _this._close(cb);
   },
 
-  _init: function () {
+  _open: function () {
     var _this = this;
 
     _this._title.innerHTML = _this._alert;

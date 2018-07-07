@@ -106,17 +106,17 @@ modPop.prototype = {
   _close: function (cb) {
     var _this = this;
 
-    const modalClose = _this._btn;
+    const mClose = _this._btn;
 
-    modalClose._elhs = modalClose._elhs || {};
-    modalClose._elhs.click = function () {
+    mClose._elh = mClose._elh || {};
+    mClose._elh.click = function () {
       setTimeout(function () {
-        _this._pop.remove();
+        _this._parent.removeChild(_this._pop);
       }, 500);
       _this._tl.reverse();
 
       if (cb && typeof(cb) === 'function') cb();
     };
-    modalClose.addEventListener('click', modalClose._elhs.click);
+    mClose.addEventListener('click', mClose._elh.click);
   }
 };

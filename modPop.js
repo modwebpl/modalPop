@@ -106,10 +106,8 @@ modPop.prototype = {
   _close: function (cb) {
     var _this = this;
 
-    const mClose = _this._btn;
-
-    mClose._elh = mClose._elh || {};
-    mClose._elh.click = function () {
+    _this._btn._elh = _this._btn._elh || {};
+    _this._btn._elh.click = function () {
       setTimeout(function () {
         _this._parent.removeChild(_this._pop);
       }, 500);
@@ -117,6 +115,6 @@ modPop.prototype = {
 
       if (cb && typeof(cb) === 'function') cb();
     };
-    mClose.addEventListener('click', mClose._elh.click);
+    _this._btn.addEventListener('click', _this._btn._elh.click);
   }
 };

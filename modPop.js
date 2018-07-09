@@ -81,8 +81,6 @@ modPop.prototype = {
       }
     });
 
-    CSSPlugin;
-
     return true;
   },
 

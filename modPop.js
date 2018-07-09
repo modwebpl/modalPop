@@ -75,7 +75,11 @@ modPop.prototype = {
 
     _this._alert = msg;
 
-    _this._tl = new TimelineLite();
+    _this._tl = new TimelineLite({
+      onReverseComplete: function(){
+        _this._parent.removeChild(_this._pop);
+      }
+    });
 
     CSSPlugin;
 
@@ -108,11 +112,7 @@ modPop.prototype = {
 
     _this._btn._elh = _this._btn._elh || {};
     _this._btn._elh.click = function () {
-      setTimeout(function () {
-        _this._parent.removeChild(_this._pop);
-      }, 500);
       _this._tl.reverse();
-
       if (cb && typeof(cb) === 'function') cb();
     };
     _this._btn.addEventListener('click', _this._btn._elh.click);

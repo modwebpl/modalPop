@@ -22,7 +22,7 @@ modPop.prototype = {
     // create elements
 
     _this._pop = document.createElement('div');
-    _this._id = id;
+    _this._pop.id = id;
     _this._setStyle(_this._pop, {
       'width': '100%',
       'height': '100%',
